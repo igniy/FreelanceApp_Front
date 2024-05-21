@@ -83,7 +83,7 @@ const Auth = () => {
                         </div>
                     )}
                     <button type="submit" className="auth-button">
-                        {isLogin ? 'Login' : 'Sign in'}
+                        {isLogin ? 'Login' : 'Sign up'}
                     </button>
                 </form>
                 <button onClick={toggleForm} className="toggle-button">

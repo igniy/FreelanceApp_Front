@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getUserProfile, getProjectsByClient } from '../api';
+import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
 const CustomerProfile = () => {
     const [projects, setProjects] = useState([]);
@@ -12,7 +13,6 @@ const CustomerProfile = () => {
         const fetchProfile = async () => {
             try {
                 const response = await getUserProfile();
-                //alert(response.data.user._id);
                 if (response.data.user) {
                     setFormData({
                         username: response.data.user.username || '',
@@ -20,7 +20,6 @@ const CustomerProfile = () => {
                     });
 
                     const projectsResponse = await getProjectsByClient(response.data.user._id);
-                    //alert(projectsResponse.data);
                     setProjects(projectsResponse.data);
                 } else {
                     console.error("No user data found in profile response");
@@ -35,31 +34,45 @@ const CustomerProfile = () => {
     }, []);
 
     return (
-        <div style={{ padding: '2rem' }}>
-            <h2>Customer Profile</h2>
-            <div>
-                <strong>Name:</strong> {formData.username}
-            </div>
-            <div>
-                <strong>Email:</strong> {formData.email}
-            </div>
-            <h3>Your Projects</h3>
-            <ul>
-                {projects.map(project => (
-                    <li key={project._id}>
-                        <div>
-                            <strong>Title:</strong> {project.title}
-                        </div>
-                        <div>
-                            <strong>Description:</strong> {project.description}
-                        </div>
-                        <div>
-                            <strong>Status:</strong> {project.status}
-                        </div>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <Container style={{ padding: '2rem' }}>
+            <Row className="mb-4">
+                <Col>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>Customer Profile</Card.Title>
+                            <Card.Text>
+                                <strong>Name:</strong> {formData.username}
+                            </Card.Text>
+                            <Card.Text>
+                                <strong>Email:</strong> {formData.email}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <h3>Your Projects</h3>
+                    <ListGroup>
+                        {projects.map(project => (
+                            <ListGroup.Item key={project._id}>
+                                <Card>
+                                    <Card.Body>
+                                        <Card.Title>{project.title}</Card.Title>
+                                        <Card.Text>
+                                            <strong>Description:</strong> {project.description}
+                                        </Card.Text>
+                                        <Card.Text>
+                                            <strong>Status:</strong> {project.status}
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </ListGroup.Item>
+                        ))}
+                    </ListGroup>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

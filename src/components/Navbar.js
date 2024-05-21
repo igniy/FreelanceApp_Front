@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { AuthContext } from '../context/AuthContext';
 import '../styles/Navbar.css';
 import logo from '../assets/logo.png'; // Путь к логотипу
 
-const Navbar = () => {
+const NavigationBar = () => {
     const { user, handleLogout, loading } = useContext(AuthContext);
 
     if (loading) {
@@ -12,47 +13,47 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="navbar">
-            <div className="navbar-logo">
-                <img src={logo} alt="FreeLancerPro Logo" />
-            </div>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                {!user && (
-                    <>
-                        <li>
-                            <Link to="/auth">Login</Link>
-                        </li>
-                    </>
-                )}
-                {user && user.role === 'freelancer' && (
-                    <li>
-                        <Link to="/freelancer-profile">Freelancer Profile</Link>
-                    </li>
-                )}
-                {user && user.role === 'client' && (
-                    <li>
-                        <Link to="/customer-profile">Customer Profile</Link>
-                    </li>
-                )}
-                {user && (
-                    <>
-                        {user.role === 'client' && (
-                            <li>
-                                <Link to="/create-project">Create Project</Link>
-                            </li>
+        <Navbar bg="light" expand="lg" className="navbar">
+            <Container>
+                <Navbar.Brand href="/">
+                    <img src={logo} alt="FreeLancerPro Logo" style={{ width: '100px' }} />
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <LinkContainer to="/">
+                            <Nav.Link>Home</Nav.Link>
+                        </LinkContainer>
+                        {!user && (
+                            <LinkContainer to="/auth">
+                                <Nav.Link>Login</Nav.Link>
+                            </LinkContainer>
                         )}
-
-                        <li>
-                            <button onClick={handleLogout} className="logout-button">Logout</button>
-                        </li>
-                    </>
-                )}
-            </ul>
-        </nav>
+                        {user && user.role === 'freelancer' && (
+                            <LinkContainer to="/freelancer-profile">
+                                <Nav.Link>Freelancer Profile</Nav.Link>
+                            </LinkContainer>
+                        )}
+                        {user && user.role === 'client' && (
+                            <LinkContainer to="/customer-profile">
+                                <Nav.Link>Customer Profile</Nav.Link>
+                            </LinkContainer>
+                        )}
+                        {user && user.role === 'client' && (
+                            <LinkContainer to="/create-project">
+                                <Nav.Link>Create Project</Nav.Link>
+                            </LinkContainer>
+                        )}
+                        {user && (
+                            <Button variant="outline-danger" onClick={handleLogout}>
+                                Logout
+                            </Button>
+                        )}
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 };
 
-export default Navbar;
+export default NavigationBar;

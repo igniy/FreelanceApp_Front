@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { Container, Row, Col, Card, Form, Button, Image } from 'react-bootstrap';
 import '../styles/Auth.css';
-import logo from '../assets/logo.png'; // Добавьте ваш логотип в папку assets
+import logo from '../assets/logo.png';
 
 const Auth = () => {
     const { handleLogin, handleRegister } = useContext(AuthContext);
@@ -37,60 +38,68 @@ const Auth = () => {
     };
 
     return (
-        <div className="auth-container">
-            <div className="auth-card">
-                <img src={logo} alt="Logo" className="logo" />
-                <h2>{isLogin ? 'Login' : 'Register'}</h2>
-                <form onSubmit={onSubmit}>
-                    {!isLogin && (
-                        <div className="input-group">
-                            <input
-                                type="text"
-                                name="username"
-                                value={formData.username}
-                                onChange={onChange}
-                                placeholder="Username"
-                                required
-                            />
-                        </div>
-                    )}
-                    <div className="input-group">
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={onChange}
-                            placeholder="Email Address"
-                            required
-                        />
-                    </div>
-                    <div className="input-group">
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={onChange}
-                            placeholder="Password"
-                            required
-                        />
-                    </div>
-                    {!isLogin && (
-                        <div className="input-group">
-                            <select name="role" value={formData.role} onChange={onChange}>
-                                <option value="freelancer">Freelancer</option>
-                                <option value="client">Client</option>
-                            </select>
-                        </div>
-                    )}
-                    <button type="submit" className="auth-button">
-                        {isLogin ? 'Login' : 'Sign up'}
-                    </button>
-                </form>
-                <button onClick={toggleForm} className="toggle-button">
-                    {isLogin ? 'Need to Register?' : 'Already have an account? Log In'}
-                </button>
-            </div>
-        </div>
+        <Container fluid className="auth-container d-flex align-items-center justify-content-center">
+            <Row className="w-100 justify-content-center">
+                <Col md={6} lg={4}>
+                    <Card className="auth-card p-4">
+                        <Card.Body>
+                            <div className="text-center mb-4">
+                                <Image src={logo} alt="Logo" className="logo mb-2" />
+                                <h2>{isLogin ? 'Login' : 'Register'}</h2>
+                            </div>
+                            <Form onSubmit={onSubmit}>
+                                {!isLogin && (
+                                    <Form.Group className="mb-3">
+                                        <Form.Control
+                                            type="text"
+                                            name="username"
+                                            value={formData.username}
+                                            onChange={onChange}
+                                            placeholder="Username"
+                                            required
+                                        />
+                                    </Form.Group>
+                                )}
+                                <Form.Group className="mb-3">
+                                    <Form.Control
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={onChange}
+                                        placeholder="Email Address"
+                                        required
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Control
+                                        type="password"
+                                        name="password"
+                                        value={formData.password}
+                                        onChange={onChange}
+                                        placeholder="Password"
+                                        required
+                                    />
+                                </Form.Group>
+                                {!isLogin && (
+                                    <Form.Group className="mb-3">
+                                        <Form.Select name="role" value={formData.role} onChange={onChange}>
+                                            <option value="freelancer">Freelancer</option>
+                                            <option value="client">Client</option>
+                                        </Form.Select>
+                                    </Form.Group>
+                                )}
+                                <Button type="submit" className="w-100 mb-3">
+                                    {isLogin ? 'Login' : 'Sign up'}
+                                </Button>
+                            </Form>
+                            <Button variant="link" onClick={toggleForm} className="w-100 toggle-button">
+                                {isLogin ? 'Need to Register?' : 'Already have an account? Log In'}
+                            </Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

@@ -7,7 +7,8 @@ import CreateProject from './pages/CreateProject';
 import CustomerProfile from './pages/CustomerProfile';
 import FreelancerProfile from './pages/FreelancerProfile';
 import { AuthProvider } from './context/AuthContext';
-import Footer from './components/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './styles/App.css';
 
 const AppLayout = ({ children }) => {
@@ -16,16 +17,12 @@ const AppLayout = ({ children }) => {
 
     return (
         <div className="App">
-            {!hideNavbarAndFooter && (
-                <header>
-                    <h1>FreeLancerPro</h1>
-                </header>
-            )}
+            {!hideNavbarAndFooter && <header><h1>FreeLancerPro</h1></header>}
             {!hideNavbarAndFooter && <Navbar />}
             <div className="container">{children}</div>
             {!hideNavbarAndFooter && (
                 <footer>
-                    <p>© 2024 Freelance pro - сервис по поиску фрилансеров. Made by Kvashnin Yuriy RTU "MIREA"</p>
+                    <p>© 2024 FreelancePro - сервис по поиску фрилансеров. Made by Kvashnin Yuriy RTU "MIREA"</p>
                 </footer>
             )}
         </div>

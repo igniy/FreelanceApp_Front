@@ -1,34 +1,61 @@
-body {
-    font-family: Arial, sans-serif;
+/* Общие стили для всего приложения */
+body, html {
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
 }
 
-header, footer {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-}
-
-nav {
-    background-color: #444;
-    padding: 1rem;
-}
-
-nav a {
-    color: white;
-    margin: 0 0.5rem;
-    text-decoration: none;
-}
-
-nav a:hover {
-    text-decoration: underline;
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+header, footer {
+    text-align: center;
+    padding: 10px 20px;
+    background: #0066ff;
+    color: #fff;
+}
+
+footer {
+    margin-top: auto; /* Прижимаем футер к низу */
+}
+
+/* Навигационное меню */
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Кнопки и ссылки */
+button, .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: #0056b3;
 }

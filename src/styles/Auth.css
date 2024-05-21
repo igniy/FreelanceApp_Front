@@ -1,0 +1,65 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /*background: url('../assets/background.jpg') no-repeat center center fixed; /* Убедитесь, что путь к вашему фоновому изображению правильный */
+    background-size: cover;
+}
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон для эффекта стекла */
+    backdrop-filter: blur(10px); /* Эффект размытия для фонового изображения */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.auth-card img {
+    width: 85px;
+    height: 85px;
+    margin-bottom: 1rem;
+}
+
+.auth-card h2 {
+    margin-bottom: 1rem;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.auth-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.auth-container button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #009688;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-container button:hover {
+    background-color: #00796b;
+}
+
+.auth-container a {
+    display: block;
+    margin-top: 10px;
+    color: #009688;
+    text-decoration: none;
+}

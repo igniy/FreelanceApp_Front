@@ -1,0 +1,62 @@
+nav {
+    display: flex;
+    justify-content: center; /* Центрируем контент */
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+    position: relative; /* Относительное позиционирование для логотипа */
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    position: absolute; /* Абсолютное позиционирование логотипа */
+    left: 1rem;
+}
+
+.navbar-logo img {
+    width: 50px; /* Уменьшите размер логотипа */
+    height: 50px;
+    margin-right: 10px;
+}
+
+.navbar-logo span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #c0392b;
+}

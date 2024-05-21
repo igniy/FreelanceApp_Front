@@ -1,0 +1,26 @@
+.profile-container {
+    padding: 2rem;
+}
+
+.profile-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-card h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.profile-card p {
+    color: #555;
+}
+
+.profile-card .profile-status {
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
